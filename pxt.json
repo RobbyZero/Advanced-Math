@@ -9,8 +9,7 @@
         "main.ts",
         "README.md",
         "assets.json",
-        "Advanced-Math.ts",
-        "linear-algebra.ts"
+        "Advanced-Math.ts"
     ],
     "testFiles": [
         "test.ts"
@@ -22,5 +21,5 @@
     "supportedTargets": [
         "arcade"
     ],
-    "preferredEditor": "blocksprj"
+    "preferredEditor": "tsprj"
 }
