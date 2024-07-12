@@ -107,6 +107,56 @@ namespace Cryptography {
     }
 }
 
+//% color=#67CD23 icon="\uf02d" block="Calculus"
+namespace calculus {
+    /**
+     * Numerically computes the derivative of a function at a given point using the central difference method.
+     * @param func The function to differentiate.
+     * @param x The point at which to compute the derivative.
+     * @param h The step size.
+     * @returns The derivative of the function at the given point.
+     */
+    //% block="differentiate $func at $x with step size $h"
+    //% inlineInputMode=inline
+    export function differentiate(func: (x: number) => number, x: number, h: number): number {
+        return (func(x + h) - func(x - h)) / (2 * h);
+    }
+
+    /**
+     * Numerically computes the definite integral of a function over a given interval using the trapezoidal rule.
+     * @param func The function to integrate.
+     * @param a The lower bound of the interval.
+     * @param b The upper bound of the interval.
+     * @param n The number of subintervals (higher values give better accuracy).
+     * @returns The definite integral of the function over the given interval.
+     */
+    //% block="integrate $func from $a to $b with $n subintervals"
+    //% inlineInputMode=inline
+    export function integrate(func: (x: number) => number, a: number, b: number, n: number): number {
+        const h = (b - a) / n;
+        let sum = 0.5 * (func(a) + func(b));
+        for (let i = 1; i < n; i++) {
+            sum += func(a + i * h);
+        }
+        return h * sum;
+    }
+
+    /**
+     * Performs integration by parts on the given functions.
+     * @param f The first function.
+     * @param g The second function.
+     * @param a The lower bound of integration.
+     * @param b The upper bound of integration.
+     * @returns The result of integration by parts.
+     */
+    //% block="integrate by parts: ∫($f * $g) from $a to $b"
+    //% inlineInputMode=inline
+    export function integrateByParts(f: (x: number) => number, g: (x: number) => number, a: number, b: number): number {
+        const integralF = integrate(f, a, b, 1000); // Compute ∫f(x)dx
+        const integralG = integrate(g, a, b, 1000); // Compute ∫g(x)dx
+        return (f(a) * g(a) - f(b) * g(b)) - integralF * integralG; // Apply integration by parts formula
+    }
+}
 
 
 //% color=#2AE7EA icon="\uf0cb" block="Exponential/Log"
