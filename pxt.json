@@ -10,17 +10,18 @@
         "README.md",
         "assets.json",
         "Advanced-Math.ts",
-        "linear-algebra.ts"
+        "linear-algebra.ts",
+        "numberTheory.ts"
     ],
     "testFiles": [
         "test.ts"
     ],
     "targetVersions": {
-        "target": "1.12.53",
+        "target": "1.12.55",
         "targetId": "arcade"
     },
     "supportedTargets": [
         "arcade"
     ],
-    "preferredEditor": "blocksprj"
+    "preferredEditor": "tsprj"
 }
