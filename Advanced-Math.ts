@@ -22,7 +22,6 @@ namespace Cryptography {
     // Caesar cipher decryption
     //% block="Caesar Cipher Decrypt $ciphertext with shift $shift"
     export function caesarCipherDecrypt(ciphertext: string, shift: number): string {
-        // Decryption is just encryption with negative shift
         return caesarCipherEncrypt(ciphertext, -shift);
     }
 
@@ -108,7 +107,7 @@ namespace Cryptography {
 }
 
 //% color=#67CD23 icon="\uf02d" block="Calculus"
-namespace calculus {
+namespace Calculus {
     /**
      * Numerically computes the derivative of a function at a given point using the central difference method.
      * @param func The function to differentiate.
@@ -158,9 +157,8 @@ namespace calculus {
     }
 }
 
-
 //% color=#2AE7EA icon="\uf0cb" block="Exponential/Log"
-namespace explog {
+namespace ExponentialLog {
     /**
      * Computes the exponential function e^x for a given value of x.
      * @param x The exponent value.
@@ -197,12 +195,11 @@ namespace explog {
 
 //% color=#49EE1B icon="\uf151" block="Trig Modes"
 namespace TrigModes {
-    let pi = 0;
+    const PI = Math.PI;
 
-    //% block="degrees %angle"
-    //% angle.min=-180 angle.max=180
-    export function Degrees(angle: number): number {
-        pi = Math.atan2(0, -1); // Calculate pi (π)
-        return pi * angle / 180; // Convert angle from degrees to radians
+    //% block="radians to degrees %angle"
+    //% angle.min=-360 angle.max=360
+    export function radiansToDegrees(angle: number): number {
+        return angle * 180 / PI; // Convert angle from radians to degrees
     }
 }
