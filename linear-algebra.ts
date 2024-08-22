@@ -8,14 +8,18 @@ namespace LinearAlgebra {
     // Custom error handling
     //% shim=LinearAlgebra::errorHandler
     function errorHandler(message: string): void {
-        console.error("Linear Algebra Error: " + message);
+        throw new Error("Linear Algebra Error: " + message);
     }
 
     // Vector operations
 
     // Add two vectors
-    //% block="vectorAddition $v1 $v2"
+    //% block="vector addition $v1 and $v2" v1.defl=0 v2.defl=0
+    //% v1.shadow="array" v2.shadow="array"
     export function vectorAddition(v1: Vector, v2: Vector): Vector {
+        if (v1.length === 0 || v2.length === 0) {
+            errorHandler("Vectors cannot be empty.");
+        }
         if (v1.length !== v2.length) {
             errorHandler("Vectors must be of the same length for addition.");
         }
@@ -23,8 +27,12 @@ namespace LinearAlgebra {
     }
 
     // Subtract two vectors
-    //% block="vectorSubtraction $v1 $v2"
+    //% block="vector subtraction $v1 from $v2" v1.defl=0 v2.defl=0
+    //% v1.shadow="array" v2.shadow="array"
     export function vectorSubtraction(v1: Vector, v2: Vector): Vector {
+        if (v1.length === 0 || v2.length === 0) {
+            errorHandler("Vectors cannot be empty.");
+        }
         if (v1.length !== v2.length) {
             errorHandler("Vectors must be of the same length for subtraction.");
         }
@@ -32,14 +40,22 @@ namespace LinearAlgebra {
     }
 
     // Multiply a vector by a scalar
-    //% block="scalarMultiplication $vector $scalar"
+    //% block="multiply vector $vector by scalar $scalar" vector.defl=0 scalar.defl=1
+    //% vector.shadow="array"
     export function scalarMultiplication(vector: Vector, scalar: number): Vector {
+        if (vector.length === 0) {
+            errorHandler("Vector cannot be empty.");
+        }
         return vector.map(val => val * scalar);
     }
 
     // Calculate the dot product of two vectors
-    //% block="dotProduct $v1 $v2"
+    //% block="dot product of $v1 and $v2" v1.defl=0 v2.defl=0
+    //% v1.shadow="array" v2.shadow="array"
     export function dotProduct(v1: Vector, v2: Vector): number {
+        if (v1.length === 0 || v2.length === 0) {
+            errorHandler("Vectors cannot be empty.");
+        }
         if (v1.length !== v2.length) {
             errorHandler("Vectors must be of the same length for dot product.");
         }
@@ -49,8 +65,12 @@ namespace LinearAlgebra {
     // Matrix operations
 
     // Add two matrices
-    //% block="matrixAddition $matrix1 $matrix2"
+    //% block="matrix addition $matrix1 and $matrix2" matrix1.defl=0 matrix2.defl=0
+    //% matrix1.shadow="array" matrix2.shadow="array"
     export function matrixAddition(matrix1: Matrix, matrix2: Matrix): Matrix {
+        if (matrix1.length === 0 || matrix2.length === 0) {
+            errorHandler("Matrices cannot be empty.");
+        }
         if (matrix1.length !== matrix2.length || matrix1[0].length !== matrix2[0].length) {
             errorHandler("Matrices must have the same dimensions for addition.");
         }
@@ -58,8 +78,12 @@ namespace LinearAlgebra {
     }
 
     // Subtract two matrices
-    //% block="matrixSubtraction $matrix1 $matrix2"
+    //% block="matrix subtraction $matrix1 from $matrix2" matrix1.defl=0 matrix2.defl=0
+    //% matrix1.shadow="array" matrix2.shadow="array"
     export function matrixSubtraction(matrix1: Matrix, matrix2: Matrix): Matrix {
+        if (matrix1.length === 0 || matrix2.length === 0) {
+            errorHandler("Matrices cannot be empty.");
+        }
         if (matrix1.length !== matrix2.length || matrix1[0].length !== matrix2[0].length) {
             errorHandler("Matrices must have the same dimensions for subtraction.");
         }
@@ -67,8 +91,12 @@ namespace LinearAlgebra {
     }
 
     // Multiply two matrices
-    //% block="matrixMultiplication $matrix1 $matrix2"
+    //% block="matrix multiplication $matrix1 and $matrix2" matrix1.defl=0 matrix2.defl=0
+    //% matrix1.shadow="array" matrix2.shadow="array"
     export function matrixMultiplication(matrix1: Matrix, matrix2: Matrix): Matrix {
+        if (matrix1.length === 0 || matrix2.length === 0) {
+            errorHandler("Matrices cannot be empty.");
+        }
         if (matrix1[0].length !== matrix2.length) {
             errorHandler("Number of columns in the first matrix must equal number of rows in the second matrix for multiplication.");
         }
