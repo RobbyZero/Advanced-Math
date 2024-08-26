@@ -22,11 +22,13 @@ function calculateGcd(a: number, b: number): number {
 
 // Calculate the least common multiple (LCM) of two numbers
 function calculateLcm(a: number, b: number): number {
-    return (a * b) / calculateGcd(a, b);
+    if (a === 0 || b === 0) return 0; // Handle cases where one of the numbers is 0
+    return Math.abs(a * b) / calculateGcd(a, b); // Use Math.abs to ensure the LCM is positive
 }
 
 // Factorize a number into its prime factors
 function getPrimeFactors(n: number): number[] {
+    if (n < 1) return []; // Handle cases where n is less than 1
     let factors: number[] = [];
     // Handle 2 separately
     while (n % 2 === 0) {
@@ -74,3 +76,4 @@ namespace numberTheoryTools {
         return getPrimeFactors(n);
     }
 }
+
